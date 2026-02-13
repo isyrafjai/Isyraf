@@ -18,13 +18,13 @@ const LikertScale: React.FC<LikertScaleProps> = ({ labels, value, onChange, feed
 
   return (
     <div className="w-full">
-      <div className="flex gap-4 sm:gap-8 mt-2">
+      <div className="flex gap-3 sm:gap-6 md:gap-10">
         {options.map((opt, idx) => {
           const isActive = value === opt.score;
-          const colors = [
-            'border-trustori-orange bg-trustori-orange text-white',
-            'border-trustori-lightblue bg-trustori-lightblue text-white',
-            'border-trustori-blue bg-trustori-blue text-white'
+          const bgColors = [
+            'bg-trustori-orange text-white border-trustori-orange',
+            'bg-trustori-lightblue text-white border-trustori-lightblue',
+            'bg-trustori-blue text-white border-trustori-blue'
           ];
           const textColors = [
             'text-trustori-orange',
@@ -36,19 +36,19 @@ const LikertScale: React.FC<LikertScaleProps> = ({ labels, value, onChange, feed
             <button
               key={idx}
               onClick={() => onChange(opt.score)}
-              className="flex flex-col items-center gap-2 group flex-1 focus:outline-none"
+              className="flex flex-col items-center gap-4 sm:gap-6 group flex-1 focus:outline-none"
             >
               <div
-                className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+                className={`w-12 h-12 sm:w-16 sm:h-16 md:w-24 md:h-24 rounded-2xl sm:rounded-3xl border-2 flex items-center justify-center transition-all duration-500 shadow-sm ${
                   isActive 
-                    ? `${colors[idx]} scale-110 shadow-lg` 
-                    : 'border-gray-200 bg-white text-gray-400 group-hover:border-gray-300'
+                    ? `${bgColors[idx]} scale-105 sm:scale-110 shadow-2xl` 
+                    : 'border-slate-100 bg-slate-50 text-slate-300 group-hover:border-slate-200 group-hover:bg-white group-hover:text-slate-500'
                 }`}
               >
-                <span className="text-xs font-bold">{idx + 1}</span>
+                <span className="text-lg sm:text-xl md:text-3xl font-black">{idx + 1}</span>
               </div>
               <span 
-                className={`text-[10px] uppercase font-bold tracking-wider text-center transition-colors duration-300 ${
+                className={`text-[8px] sm:text-[11px] md:text-[13px] uppercase font-bold tracking-[0.15em] sm:tracking-[0.2em] text-center transition-colors duration-500 leading-tight h-6 sm:h-8 flex items-center px-1 sm:px-2 ${
                   isActive ? textColors[idx] : 'text-gray-400 group-hover:text-gray-600'
                 }`}
               >
@@ -58,13 +58,16 @@ const LikertScale: React.FC<LikertScaleProps> = ({ labels, value, onChange, feed
           );
         })}
       </div>
-      <p className={`text-xs font-semibold mt-4 transition-all duration-300 h-4 ${
-        value === 2 ? 'text-trustori-orange' : 
-        value === 5 ? 'text-trustori-lightblue' : 
-        'text-trustori-blue'
-      }`}>
-        {feedback}
-      </p>
+      <div className="mt-6 sm:mt-8 h-4 sm:h-6 flex items-center">
+        <p className={`text-xs sm:text-sm md:text-base font-bold uppercase tracking-[0.1em] transition-all duration-500 ${
+          value === 2 ? 'text-trustori-orange opacity-100' : 
+          value === 5 ? 'text-trustori-lightblue opacity-100' : 
+          value === 9 ? 'text-trustori-blue opacity-100' :
+          'text-transparent opacity-0 translate-y-2'
+        }`}>
+          {feedback}
+        </p>
+      </div>
     </div>
   );
 };
