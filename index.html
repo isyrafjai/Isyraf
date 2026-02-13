@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trustori | The Brand Custodian</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Hanken Grotesk', 'sans-serif'],
+                        display: ['Hanken Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        trustori: {
+                            blue: '#0047BA',
+                            dark: '#24272A',
+                            orange: '#FF671D',
+                            lightblue: '#2A7DE1',
+                            deep: '#001D4C'
+                        }
+                    },
+                    backgroundImage: {
+                        'brand-mesh': 'radial-gradient(circle at 70% 30%, #FF671D 0%, transparent 50%), radial-gradient(circle at 10% 80%, #0047BA 0%, #001D4C 100%)',
+                        'brand-mesh-vibrant': 'linear-gradient(135deg, #0047BA 0%, #2A7DE1 40%, #FF671D 100%)',
+                        'dot-pattern': 'radial-gradient(#24272A 1px, transparent 1px)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #F8F9FA; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+        .dot-grid { background-size: 32px 32px; background-image: radial-gradient(rgba(0, 71, 186, 0.08) 1px, transparent 1px); }
+        .glass-panel { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        
+        @media print { .no-print { display: none !important; } body { background: white; } }
+        .loading-dots:after { content: '.'; animation: dots 1.5s steps(5, end) infinite; }
+        @keyframes dots { 0%, 20% { content: '.'; } 40% { content: '..'; } 60% { content: '...'; } 80%, 100% { content: ''; } }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+</head>
+<body class="font-sans text-trustori-dark dot-grid">
+    <div id="root"></div>
+</body>
+</html>
